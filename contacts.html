@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — ТД Бурнефтегазснаб</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="index.html" class="logo"><img src="assets/logo.svg" alt="ТД Бурнефтегазснаб" class="logo-img"></a>
+    <nav class="main-nav">
+      <div class="has-dropdown">
+        <a href="#">Продукция</a>
+        <div class="dropdown">
+          <a href="metal-constructions.html">Металлоконструкции</a>
+          <a href="pipe-parts.html">Детали трубопроводов</a>
+          <a href="supports.html">Опоры трубопроводов</a>
+          <a href="pipes.html">Стальные и нержавеющие трубы</a>
+          <a href="coating.html">Антикоррозионные покрытия</a>
+        </div>
+      </div>
+      <a href="about.html">О компании</a>
+      <a href="delivery.html">Оплата и доставка</a>
+      <a href="contacts.html" class="active">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <a href="mailto:info@tdbngs.ru" class="header-email">info@tdbngs.ru</a>
+      <a href="tel:+74959782555" class="header-phone">+7 (495) 978-25-55</a>
+      <a href="contacts.html#request" class="btn btn-primary">Оставить заявку</a>
+      <button class="burger" aria-label="Меню"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item"><span class="city">Москва</span> <a href="tel:+74959782555">+7 (495) 978-25-55</a></div>
+    <div class="topbar-item"><span class="city">Санкт-Петербург</span> <a href="tel:+78124182233">+7 (812) 418-22-33</a></div>
+    <div class="topbar-item"><span class="city">Екатеринбург</span> <a href="tel:+73432885607">+7 (343) 288-56-07</a></div>
+    <div class="topbar-item"><span class="city">Челябинск</span> <a href="tel:+73512720493">+7 (351) 272-04-93</a></div>
+  </div>
+</div>
+
+
+<section class="section-head">
+  <div class="container">
+    <div class="eyebrow">Связаться с нами</div>
+    <h2 style="font-size:40px;max-width:760px;">Контакты</h2>
+  </div>
+</section>
+
+<section class="section-tight" id="request">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-size:15px;color:var(--red);margin-bottom:14px;">Обсудить проект</h3>
+        <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:420px;">Обсудим производство и комплектацию вашего проекта. Пришлите спецификацию или расскажите о задаче — подберём решение под технические требования.</p>
+        <p style="margin-top:22px;font-size:13px;color:var(--muted);">Для заявок, спецификаций и технической документации</p>
+        <a href="mailto:info@tdbngs.ru" style="font-family:var(--font-display);font-size:20px;color:var(--red);">info@tdbngs.ru</a>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();alert('Спасибо! Заявка отправлена.');this.reset();">
+        <label class="field-label">Имя</label>
+        <input type="text" name="name" placeholder="Ваше имя" required minlength="2">
+        <label class="field-label">Телефон</label>
+        <input type="tel" class="phone-mask" name="phone" placeholder="+7 (___) ___-__-__" required>
+        <label class="field-label">Комментарий</label>
+        <textarea placeholder="Комментарий (не обязательно)"></textarea>
+        <label class="consent"><input type="checkbox" class="consent-check" required> Я подтверждаю ознакомление и даю <a href="consent.html" target="_blank">согласие на обработку</a> моих персональных данных в порядке и на условиях, указанных в <a href="privacy-policy.html" target="_blank">Политике обработки персональных данных</a></label>
+        <button type="submit" class="btn btn-dark" style="margin-top:6px;">Отправить заявку</button>
+      </form>
+    </div>
+
+    <div class="city-cards">
+      <div class="city"><div class="num">01</div><div class="name">Москва</div><a class="tel" href="tel:+74959782555">+7 (495) 978-25-55</a></div>
+      <div class="city"><div class="num">02</div><div class="name">Санкт-Петербург</div><a class="tel" href="tel:+78124182233">+7 (812) 418-22-33</a></div>
+      <div class="city"><div class="num">03</div><div class="name">Екатеринбург</div><a class="tel" href="tel:+73432885607">+7 (343) 288-56-07</a></div>
+      <div class="city"><div class="num">04</div><div class="name">Челябинск</div><a class="tel" href="tel:+73512720493">+7 (351) 272-04-93</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">ТД БУРНЕФТЕГАЗСНАБ</div>
+        <p>Комплектация предприятий нефтегазового сектора: производство и поставка труб, деталей трубопроводов, опор, металлоконструкций и антикоррозионных покрытий.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <a href="about.html">О компании</a>
+        <a href="delivery.html">Оплата и доставка</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="privacy-policy.html">Юридическая информация</a>
+      </div>
+      <div>
+        <h4>Продукция</h4>
+        <a href="metal-constructions.html">Металлоконструкции</a>
+        <a href="pipe-parts.html">Детали трубопроводов</a>
+        <a href="supports.html">Опоры трубопроводов</a>
+        <a href="pipes.html">Стальные и нержавеющие трубы</a>
+        <a href="coating.html">Антикоррозионные покрытия</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="mailto:info@tdbngs.ru">info@tdbngs.ru</a>
+        <a href="tel:+74959782555">+7 (495) 978-25-55</a>
+        <p>Московская обл., г. о. Ленинский, г. Видное, ул. Строительная, д. 3</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2011—2026 ООО «ТД Бурнефтегазснаб»</span>
+      <span><a href="privacy-policy.html" style="color:inherit;">Политика конфиденциальности</a> · <a href="consent.html" style="color:inherit;">Согласие на обработку персональных данных</a></span>
+    </div>
+  </div>
+</footer>
+<script src="assets/script.js"></script>
+</body>
+</html>
