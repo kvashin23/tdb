@@ -153,9 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Form validation: block submit until required fields + consent are valid
+  // Form validation: block submit until required fields + consent are valid.
+  // On success: confirm, reset, and close the request modal if the form is inside one.
   document.querySelectorAll('.contact-form').forEach(function (form) {
     form.addEventListener('submit', function (e) {
+      e.preventDefault();
       let valid = true;
       const name = form.querySelector('input[name="name"]');
       const phone = form.querySelector('input.phone-mask');
@@ -187,11 +189,47 @@ document.addEventListener('DOMContentLoaded', function () {
         consent.closest('label').classList.add('field-invalid');
       }
 
-      if (!valid) {
-        e.preventDefault();
-      }
+      if (!valid) return;
+
+      alert('Спасибо! Заявка отправлена.');
+      form.reset();
+      const modal = form.closest('.request-modal');
+      if (modal) modal.classList.remove('open');
     });
   });
+
+  // Request modal: opens from any "Подробнее" button on product/catalog cards
+  (function () {
+    const modal = document.getElementById('requestModal');
+    if (!modal) return;
+    const subEl = document.getElementById('requestModalSub');
+
+    function openModal(productName) {
+      subEl.textContent = productName
+        ? 'Расскажите, что вас интересует по позиции «' + productName + '» — мы свяжемся с вами и подберём решение.'
+        : 'Расскажите, что вас интересует — мы свяжемся с вами и подберём решение.';
+      modal.classList.add('open');
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+    }
+
+    document.querySelectorAll('.product-card .more, .catalog-card .btn-outline-sm').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = trigger.closest('.product-card, .catalog-card');
+        const titleEl = card ? card.querySelector('h3') : null;
+        openModal(titleEl ? titleEl.textContent.trim() : '');
+      });
+    });
+
+    modal.querySelector('.request-modal-close').addEventListener('click', closeModal);
+    modal.querySelector('.request-modal-overlay').addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
 
   // Mobile nav
   var burger = document.querySelector('.burger');

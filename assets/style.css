@@ -116,7 +116,7 @@ nav.main-nav a:hover, nav.main-nav a.active{border-color:var(--red);}
     repeating-linear-gradient(-40deg, rgba(255,255,255,.045) 0 2px, transparent 2px 34px);
   pointer-events:none;
 }
-.hero-inner{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;}
 .hero-eyebrow{font-family:var(--font-display);font-size:13px;letter-spacing:.14em;color:var(--red-bright);margin-bottom:14px;}
 .hero h1{font-size:52px;line-height:1.03;max-width:620px;}
 .hero-lede{font-family:var(--font-body);text-transform:none;font-size:16px;color:var(--muted-light);max-width:460px;margin-top:18px;font-weight:400;letter-spacing:0;line-height:1.6;}
@@ -228,6 +228,8 @@ h2.h-title{font-size:30px;margin-bottom:26px;}
 .info-table .col ul li{font-size:14px;color:var(--muted);padding:5px 0;position:relative;padding-left:14px;}
 .info-table .col ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--red);}
 .info-table .note{grid-column:1/-1;padding:16px 0;font-size:13px;color:var(--muted);background:transparent;}
+.info-table.vivid .col{background:var(--white);padding:26px 24px;border-top:3px solid var(--red);box-shadow:0 2px 14px rgba(0,0,0,.05);}
+.info-table.vivid .col h4{color:var(--red);font-size:14px;letter-spacing:.03em;}
 @media (max-width:860px){.info-table, .info-table.cols-2{grid-template-columns:1fr;}}
 
 /* ---------- corner ring decoration (concentric arcs, brand flourish) ---------- */
@@ -394,6 +396,17 @@ h2.h-title{font-size:30px;margin-bottom:26px;}
 .cert-slider .cert:hover .doc-frame img{transform:scale(1.03);}
 .cert-slider .cert .num{font-family:var(--font-display);color:var(--red);font-size:13px;margin-top:8px;}
 
+/* ---------- request modal (opens from any "Подробнее" button) ---------- */
+.request-modal{display:none;position:fixed;inset:0;z-index:220;align-items:center;justify-content:center;padding:20px;}
+.request-modal.open{display:flex;}
+.request-modal-overlay{position:absolute;inset:0;background:rgba(10,10,11,.72);}
+.request-modal-box{position:relative;background:var(--white);width:100%;max-width:460px;max-height:90vh;overflow-y:auto;padding:32px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.request-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;}
+.request-modal-close:hover{color:var(--red);}
+.request-modal-box h3{font-family:var(--font-display);font-size:22px;text-transform:uppercase;margin-bottom:8px;padding-right:20px;}
+.request-modal-sub{font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+@media (max-width:520px){.request-modal-box{padding:24px 20px;}}
+
 /* ---------- certificate lightbox (click to view + page through) ---------- */
 .cert-lightbox{display:none;position:fixed;inset:0;background:rgba(10,10,11,.92);z-index:200;align-items:center;justify-content:center;}
 .cert-lightbox.open{display:flex;}
@@ -520,7 +533,7 @@ footer.site-footer{background:var(--steel);color:var(--muted-light);padding:34px
 .product-slider-wrap{position:relative;}
 .product-slider{
   display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
-  gap:1px;background:var(--line);border:1px solid var(--line);
+  gap:16px;
   scrollbar-width:none;
 }
 .product-slider::-webkit-scrollbar{display:none;}
