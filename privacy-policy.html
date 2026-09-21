@@ -223,6 +223,26 @@
     </div>
   </div>
 </footer>
+<div class="request-modal" id="requestModal">
+  <div class="request-modal-overlay"></div>
+  <div class="request-modal-box">
+    <button class="request-modal-close" type="button" aria-label="Закрыть">&times;</button>
+    <h3>Оставить заявку</h3>
+    <p class="request-modal-sub" id="requestModalSub">Расскажите, что вас интересует — мы свяжемся с вами и подберём решение.</p>
+    <form class="contact-form" id="requestModalForm">
+      <label class="field-label">ФИО</label>
+      <input type="text" name="name" placeholder="Ваше имя" required minlength="2">
+      <label class="field-label">Телефон</label>
+      <input type="tel" class="phone-mask" name="phone" placeholder="+7 (___) ___-__-__" required>
+      <label class="field-label">Электронная почта</label>
+      <input type="email" name="email" placeholder="mail@example.com">
+      <label class="field-label">Комментарий</label>
+      <textarea placeholder="Комментарий (не обязательно)"></textarea>
+      <label class="consent"><input type="checkbox" class="consent-check" required> Я подтверждаю ознакомление и даю <a href="consent.html" target="_blank">согласие на обработку</a> моих персональных данных в порядке и на условиях, указанных в <a href="privacy-policy.html" target="_blank">Политике обработки персональных данных</a></label>
+      <button type="submit" class="btn btn-dark" style="margin-top:6px;">Отправить заявку</button>
+    </form>
+  </div>
+</div>
 <script src="assets/script.js"></script>
 </body>
 </html>
