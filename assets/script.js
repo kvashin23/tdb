@@ -57,21 +57,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Certificate lightbox: click a thumb to open, page through with arrows/keys
-  (function () {
-    const certButtons = Array.from(document.querySelectorAll('.cert-slider .cert'));
-    const lightbox = document.getElementById('certLightbox');
-    if (!certButtons.length || !lightbox) return;
+  function initCertLightbox(items, lightbox, srcFor) {
+    if (!items.length || !lightbox) return;
     const imgEl = lightbox.querySelector('.cert-lightbox-img');
     const countEl = lightbox.querySelector('.cert-lightbox-count');
     let current = 0;
     function show(i) {
-      current = (i + certButtons.length) % certButtons.length;
-      const num = certButtons[current].getAttribute('data-cert');
-      imgEl.src = 'assets/certs/cert-' + String(num).padStart(2, '0') + '.jpg';
-      countEl.textContent = (current + 1) + ' / ' + certButtons.length;
+      current = (i + items.length) % items.length;
+      imgEl.src = srcFor(items[current]);
+      countEl.textContent = (current + 1) + ' / ' + items.length;
     }
-    certButtons.forEach(function (btn, i) {
-      btn.addEventListener('click', function () {
+    items.forEach(function (el, i) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
         show(i);
         lightbox.classList.add('open');
       });
@@ -90,7 +88,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'ArrowLeft') show(current - 1);
       if (e.key === 'ArrowRight') show(current + 1);
     });
-  })();
+  }
+
+  initCertLightbox(
+    Array.from(document.querySelectorAll('.cert-slider .cert')),
+    document.getElementById('certLightbox'),
+    function (btn) {
+      const num = btn.getAttribute('data-cert');
+      return 'assets/certs/cert-' + String(num).padStart(2, '0') + '.jpg';
+    }
+  );
+
+  initCertLightbox(
+    Array.from(document.querySelectorAll('[data-lightbox="compliance"]')),
+    document.getElementById('complianceLightbox'),
+    function (a) { return a.getAttribute('href'); }
+  );
 
   // Types accordion (metal-constructions page)
   document.querySelectorAll('.types-accordion').forEach(function (wrap) {
@@ -214,13 +227,20 @@ document.addEventListener('DOMContentLoaded', function () {
       modal.classList.remove('open');
     }
 
-    document.querySelectorAll('.product-card .more, .catalog-card .btn-outline-sm').forEach(function (trigger) {
+    document.querySelectorAll('.product-card .more, .product-card .thumb, .catalog-card .btn-outline-sm').forEach(function (trigger) {
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         const card = trigger.closest('.product-card, .catalog-card');
         const titleEl = card ? card.querySelector('h3') : null;
         openModal(titleEl ? titleEl.textContent.trim() : '');
+      });
+    });
+
+    document.querySelectorAll('.js-open-request').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal('');
       });
     });
 
