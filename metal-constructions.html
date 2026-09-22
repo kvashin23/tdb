@@ -29,7 +29,7 @@
     <div class="header-actions">
       <a href="mailto:info@tdbngs.ru" class="header-email">info@tdbngs.ru</a>
       <a href="tel:+74959782555" class="header-phone">+7 (495) 978-25-55</a>
-      <a href="contacts.html#request" class="btn btn-primary">Оставить заявку</a>
+      <a href="contacts.html#request" class="btn btn-primary js-open-request">Оставить заявку</a>
       <button class="burger" aria-label="Меню"><span></span></button>
     </div>
   </div>
@@ -52,7 +52,7 @@
       <h1>Производство металлоконструкций</h1>
       <p class="hero-lede">Строительные и мостовые металлоконструкции, сварные балки и технологические конструкции по проектной документации и чертежам заказчика.</p>
       <div class="hero-cta">
-        <a href="contacts.html#request" class="btn btn-primary">Получить КП</a>
+        <a href="contacts.html#request" class="btn btn-primary js-open-request">Получить КП</a>
         <a href="#types" class="btn btn-ghost-light">Каталог продукции →</a>
       </div>
     </div>
@@ -186,16 +186,24 @@
       </div>
       <div class="compliance-doc">
         <div class="compliance-doc-grid">
-          <a href="assets/certs/cert-09.jpg" target="_blank"><img src="assets/certs/cert-09-thumb.jpg" alt="Сертификат соответствия ЕАЭС RU C-RU.АД58.B.00821/24"></a>
-          <a href="assets/certs/cert-10.jpg" target="_blank"><img src="assets/certs/cert-10-thumb.jpg" alt="Приложение к сертификату, лист 1"></a>
-          <a href="assets/certs/cert-11.jpg" target="_blank"><img src="assets/certs/cert-11-thumb.jpg" alt="Приложение к сертификату, лист 2"></a>
-          <a href="assets/certs/cert-12.jpg" target="_blank"><img src="assets/certs/cert-12-thumb.jpg" alt="Приложение к сертификату, лист 3"></a>
+          <a href="assets/certs/cert-09.jpg" data-lightbox="compliance" data-cert="09"><img src="assets/certs/cert-09-thumb.jpg" alt="Сертификат соответствия ЕАЭС RU C-RU.АД58.B.00821/24"></a>
+          <a href="assets/certs/cert-10.jpg" data-lightbox="compliance" data-cert="10"><img src="assets/certs/cert-10-thumb.jpg" alt="Приложение к сертификату, лист 1"></a>
+          <a href="assets/certs/cert-11.jpg" data-lightbox="compliance" data-cert="11"><img src="assets/certs/cert-11-thumb.jpg" alt="Приложение к сертификату, лист 2"></a>
+          <a href="assets/certs/cert-12.jpg" data-lightbox="compliance" data-cert="12"><img src="assets/certs/cert-12-thumb.jpg" alt="Приложение к сертификату, лист 3"></a>
         </div>
         <div class="doc-meta"><strong>Сертификат соответствия ЕАЭС с приложениями</strong>№ RU C-RU.АД58.B.00821/24 · действует до 03.12.2029</div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="cert-lightbox" id="complianceLightbox">
+  <button class="cert-lightbox-close" type="button" aria-label="Закрыть">&times;</button>
+  <button class="cert-lightbox-nav prev" type="button" aria-label="Предыдущий">‹</button>
+  <img class="cert-lightbox-img" src="" alt="Сертификат">
+  <button class="cert-lightbox-nav next" type="button" aria-label="Следующий">›</button>
+  <div class="cert-lightbox-count"></div>
+</div>
 
 <section class="section on-dim">
   <div class="container">
@@ -259,7 +267,7 @@
           <div class="q-row"><h4>Техническое решение</h4><span class="n">03</span></div>
           <p>Подберём продукцию по ГОСТ, ОСТ, ТУ, АТК или чертежам заказчика.</p>
         </div>
-        <a href="contacts.html#request" class="btn btn-primary" style="margin-top:8px;">Получить КП</a>
+        <a href="contacts.html#request" class="btn btn-primary js-open-request" style="margin-top:8px;">Получить КП</a>
       </div>
     </div>
   </div>
@@ -323,7 +331,7 @@
         <h4>Контакты</h4>
         <a href="mailto:info@tdbngs.ru">info@tdbngs.ru</a>
         <a href="tel:+74959782555">+7 (495) 978-25-55</a>
-        <p>Московская обл., г. о. Ленинский, г. Видное, ул. Строительная, д. 3</p>
+        <p>Московская обл., г. о. Ленинский, г. Видное, ул.&nbsp;Строительная, д. 3</p>
       </div>
     </div>
     <div class="footer-bottom">
