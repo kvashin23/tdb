@@ -393,10 +393,10 @@ h2.h-title{font-size:30px;margin-bottom:26px;}
 
 /* ---------- company mosaic (text + photo grid, "as it was") ---------- */
 .company-mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px;}
-.company-mosaic .cell{background:var(--white);padding:16px 20px;min-height:0;}
+.company-mosaic .cell{background:var(--white);padding:22px 22px;min-height:160px;}
 .company-mosaic .cell h3{font-size:14.5px;line-height:1.3;margin-bottom:6px;color:var(--red);}
 .company-mosaic .cell p{font-size:13px;color:var(--ink);line-height:1.55;}
-.company-mosaic .photo{padding:0;overflow:hidden;position:relative;min-height:96px;}
+.company-mosaic .photo{padding:0;overflow:hidden;position:relative;min-height:160px;}
 .company-mosaic .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 @media (max-width:860px){.company-mosaic{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.company-mosaic{grid-template-columns:1fr;}}
@@ -577,3 +577,11 @@ footer.site-footer{background:var(--steel);color:var(--muted-light);padding:34px
 .mt-0{margin-top:0;}
 .text-muted{color:var(--muted);}
 .small-note{font-size:13px;color:var(--muted);margin-top:14px;}
+
+/* advantages 2 + 3 layout */
+.advantages-grid.adv-2-3{grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,auto);grid-auto-flow:column;}
+.advantages-grid.adv-2-3 .cell:nth-child(-n+2){grid-row:span 3;}
+.advantages-grid.adv-2-3 .cell:nth-child(n+3){grid-row:span 2;}
+.advantages-grid.adv-2-3 .cell:nth-child(n+3){grid-column:2;}
+.advantages-grid.adv-2-3 .cell:nth-child(-n+2){grid-column:1;}
+@media (max-width:860px){.advantages-grid.adv-2-3{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row;}.advantages-grid.adv-2-3 .cell{grid-row:auto !important;grid-column:auto !important;}}
