@@ -260,3 +260,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+
+/* ---------- conversion polish: reveal, counters, mobile bar ---------- */
+(function(){
+  try{
+    var targets=document.querySelectorAll('.stats-grid .stat,.process-steps li,.plant,.catalog-card,.advantages-grid .cell,.company-mosaic .cell,.faq-item,.city,.section-head .headline-row');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+      targets.forEach(function(el,i){el.classList.add('reveal');el.style.transitionDelay=((i%4)*70)+'ms';io.observe(el);});
+      var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(!e.isIntersecting)return;cio.unobserve(e.target);
+        var el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||'',t0=null;
+        function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1100,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step);}
+        requestAnimationFrame(step);
+      });},{threshold:.6});
+      document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+    }
+    if(!document.querySelector('.mobile-bar')){
+      var bar=document.createElement('div');bar.className='mobile-bar';
+      bar.innerHTML='<a class="call" href="tel:+74959782555">Позвонить</a><a class="req" href="contacts.html#request">Оставить заявку</a>';
+      document.body.appendChild(bar);
+      bar.querySelector(".req").addEventListener("click",function(ev){var t=document.querySelector(".header .js-open-request,.js-open-request");if(t){ev.preventDefault();t.click();}});
+    }
+  }catch(e){}
+})();
+
+(function(){try{var h=document.querySelector('.site-header');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>40);};f();window.addEventListener('scroll',f,{passive:true});}catch(e){}})();
