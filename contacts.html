@@ -44,23 +44,34 @@
 </div>
 
 
-<section class="section-head">
+<section class="page-hero">
+  <div class="hero-pattern"></div>
   <div class="container">
-    <div class="eyebrow">Связаться с нами</div>
-    <h2 style="font-size:40px;max-width:760px;">Контакты</h2>
+    <div class="hero-eyebrow">Связаться с нами</div>
+    <h1>Контакты</h1>
+    <p>Пришлите спецификацию или расскажите о задаче — подберём решение под технические требования.</p>
   </div>
 </section>
 
-<section class="section-tight" id="request">
+<section class="section" id="request">
   <div class="container">
-    <div class="contact-grid">
-      <div>
-        <h3 style="font-size:15px;color:var(--red);margin-bottom:14px;">Обсудить проект</h3>
-        <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:420px;">Обсудим производство и комплектацию вашего проекта. Пришлите спецификацию или расскажите о задаче — подберём решение под технические требования.</p>
-        <p style="margin-top:22px;font-size:13px;color:var(--muted);">Для заявок, спецификаций и технической документации</p>
-        <a href="mailto:info@tdbngs.ru" style="font-family:var(--font-display);font-size:20px;color:var(--red);">info@tdbngs.ru</a>
+    <div class="contact-layout">
+      <div class="contact-cards">
+        <div class="c-card"><div class="lbl">Заявки, спецификации, документация</div><a class="val" href="mailto:info@tdbngs.ru">info@tdbngs.ru</a></div>
+        <div class="c-card"><div class="lbl">Телефоны по городам</div>
+          <div class="phones-grid">
+            <div><span>Москва</span><a href="tel:+74959782555">+7 (495) 978-25-55</a></div>
+            <div><span>Санкт-Петербург</span><a href="tel:+78124182233">+7 (812) 418-22-33</a></div>
+            <div><span>Екатеринбург</span><a href="tel:+73432885607">+7 (343) 288-56-07</a></div>
+            <div><span>Челябинск</span><a href="tel:+73512720493">+7 (351) 272-04-93</a></div>
+          </div>
+        </div>
+        <div class="c-card"><div class="lbl">Адрес</div><div class="val" style="font-size:18px;">Московская обл., г. о. Ленинский, г. Видное, ул. Строительная, д. 3</div></div>
       </div>
-      <form class="contact-form">
+      <div class="form-card">
+        <h2>Обсудить проект</h2>
+        <p class="form-lead">Обсудим производство и комплектацию вашего проекта. Оставьте контакты — свяжемся с вами и подберём решение.</p>
+        <form class="contact-form">
         <label class="field-label">Имя</label>
         <input type="text" name="name" placeholder="Ваше имя" required minlength="2">
         <label class="field-label">Телефон</label>
@@ -70,13 +81,7 @@
         <label class="consent"><input type="checkbox" class="consent-check" required> Я подтверждаю ознакомление и даю <a href="consent.html" target="_blank">согласие на обработку</a> моих персональных данных в порядке и на условиях, указанных в <a href="privacy-policy.html" target="_blank">Политике обработки персональных данных</a></label>
         <button type="submit" class="btn btn-dark" style="margin-top:6px;">Отправить заявку</button>
       </form>
-    </div>
-
-    <div class="city-cards">
-      <div class="city"><div class="num">01</div><div class="name">Москва</div><a class="tel" href="tel:+74959782555">+7 (495) 978-25-55</a></div>
-      <div class="city"><div class="num">02</div><div class="name">Санкт-Петербург</div><a class="tel" href="tel:+78124182233">+7 (812) 418-22-33</a></div>
-      <div class="city"><div class="num">03</div><div class="name">Екатеринбург</div><a class="tel" href="tel:+73432885607">+7 (343) 288-56-07</a></div>
-      <div class="city"><div class="num">04</div><div class="name">Челябинск</div><a class="tel" href="tel:+73512720493">+7 (351) 272-04-93</a></div>
+      </div>
     </div>
   </div>
 </section>
