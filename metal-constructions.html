@@ -44,7 +44,7 @@
 </div>
 
 
-<section class="hero" style="background-image:linear-gradient(90deg, rgba(10,10,11,.86) 0%, rgba(10,10,11,.5) 45%, rgba(10,10,11,.1) 100%), url('assets/photos/mk-hero.jpg');background-size:cover;background-position:center;">
+<section class="hero" style="background-image:linear-gradient(90deg, rgba(10,10,11,.86) 0%, rgba(10,10,11,.5) 45%, rgba(10,10,11,.1) 100%), url('assets/photos/mk-hero-flip.jpg');background-size:cover;background-position:center;">
   <div class="hero-pattern"></div>
   <div class="container">
       <div class="hero-eyebrow">Производство</div>
@@ -87,7 +87,7 @@
   <div class="container">
     <div class="eyebrow">Каталог продукции</div>
     <h2 class="h-title">Типы продукции</h2>
-    <div class="card-grid cols-3">
+    <div class="card-grid photo-cards">
       <div class="product-card">
         <div class="thumb"><img src="assets/photos/mk-cat-building.jpg" alt="Строительные металлоконструкции" loading="lazy"></div>
         <div class="info"><h3>Строительные металлоконструкции</h3></div><div class="more"><span>Подробнее</span><span class="arrow">↗</span></div>
@@ -111,7 +111,9 @@
 
 <section class="section">
   <div class="container">
+    <div class="eyebrow">Номенклатура</div>
     <h2 class="h-title">Типы металлоконструкций</h2>
+    <div class="types-layout">
     <div class="types-accordion">
       <div class="ta-item open">
         <div class="ta-q"><span><span class="ta-num">01</span>Стальные мостовые конструкции</span><span class="plus">−</span></div>
@@ -168,7 +170,14 @@
         </div>
       </div>
     </div>
-    <p class="small-note"><strong style="color:var(--ink);">Нестандартные металлоконструкции —</strong> изготавливаем крупногабаритные и технически сложные конструкции по проектной документации и чертежам заказчика.</p>
+    <aside class="types-aside">
+      <img src="assets/photos/mk-advantages.jpg" alt="" loading="lazy">
+      <div class="kicker">По чертежам заказчика</div>
+      <h3>Нестандартные металлоконструкции</h3>
+      <p>Изготавливаем крупногабаритные и технически сложные конструкции по проектной документации и чертежам заказчика.</p>
+      <a href="contacts.html#request" class="btn btn-primary js-open-request">Отправить чертежи</a>
+    </aside>
+    </div>
   </div>
 </section>
 
@@ -227,7 +236,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section adv-dark">
   <div class="container">
     <div class="eyebrow">Наши преимущества</div>
     <h2 class="h-title">Наши преимущества</h2>
@@ -294,16 +303,16 @@
   </div>
 </section>
 
-<section class="section" id="request">
+<section class="section contact-band" id="request">
   <div class="container">
     <div class="contact-grid">
       <div>
         <div class="eyebrow">Связаться с нами</div>
         <h2 class="h-title">Контакты</h2>
-        <h3 style="font-size:15px;color:var(--red);margin-bottom:14px;">Обсудить проект</h3>
-        <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:420px;">Обсудим производство и комплектацию вашего проекта. Пришлите спецификацию или расскажите о задаче — подберём решение под технические требования.</p>
-        <p style="margin-top:22px;font-size:13px;color:var(--muted);">Для заявок, спецификаций и технической документации</p>
-        <a href="mailto:info@tdbngs.ru" style="font-family:var(--font-display);font-size:20px;color:var(--red);">info@tdbngs.ru</a>
+        <h3 class="contact-kicker">Обсудить проект</h3>
+        <p class="contact-lead">Обсудим производство и комплектацию вашего проекта. Пришлите спецификацию или расскажите о задаче — подберём решение под технические требования.</p>
+        <p class="contact-note">Для заявок, спецификаций и технической документации</p>
+        <a href="mailto:info@tdbngs.ru" class="contact-mail">info@tdbngs.ru</a>
       </div>
       <form class="contact-form">
         <label class="field-label">Имя</label>
