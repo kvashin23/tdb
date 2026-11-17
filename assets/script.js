@@ -1,4 +1,93 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Metrica goals for contact links and time spent in the foreground.
+  function reachGoal(goal) {
+    if (typeof window.ym === 'function') window.ym(112575961, 'reachGoal', goal);
+  }
+
+  const phoneGoals = {
+    '+74959782555': 'phone_click_moscow',
+    '+78124182233': 'phone_click_spb',
+    '+73432885607': 'phone_click_ekb',
+    '+73512720493': 'phone_click_chelyabinsk'
+  };
+
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link || event.defaultPrevented) return;
+    const href = link.getAttribute('href');
+
+    if (href.startsWith('tel:')) {
+      const goal = phoneGoals[href.slice(4)];
+      if (goal) reachGoal(goal);
+      reachGoal('phone_call_intent');
+    } else if (href === 'mailto:info@tdbngs.ru') {
+      reachGoal('email_click');
+    }
+  });
+
+  document.addEventListener('copy', function (event) {
+    const selection = window.getSelection();
+    if (!event.defaultPrevented && selection &&
+        selection.toString().trim() === 'info@tdbngs.ru') {
+      reachGoal('email_copy');
+    }
+  });
+
+  const activityKey = 'tdb.metrica.activeMilliseconds';
+  const activityThresholds = [30, 60, 90, 120];
+  let activeTime = 0;
+  let activeSince = null;
+
+  function restoreActiveTime() {
+    try {
+      const saved = Number(sessionStorage.getItem(activityKey));
+      if (Number.isFinite(saved) && saved >= 0) activeTime = saved;
+    } catch {
+      // Keep counting on this page when session storage is unavailable.
+    }
+  }
+
+  function updateActiveTime(leavingPage) {
+    const now = performance.now();
+    const previousTime = activeTime;
+    if (activeSince !== null) {
+      activeTime = Math.min(120000, activeTime + now - activeSince);
+    }
+    activeSince = leavingPage || activeTime >= 120000 ||
+      document.hidden || !document.hasFocus() ? null : now;
+
+    if (activeTime === previousTime) return;
+    try {
+      sessionStorage.setItem(activityKey, String(activeTime));
+    } catch {
+      // Storage is optional for tracking time on the current page.
+    }
+    activityThresholds.forEach(function (seconds) {
+      const threshold = seconds * 1000;
+      if (previousTime < threshold && activeTime >= threshold) {
+        reachGoal('active_' + seconds + 's');
+      }
+    });
+  }
+
+  function refreshActivity() {
+    updateActiveTime(false);
+  }
+
+  restoreActiveTime();
+  refreshActivity();
+  document.addEventListener('visibilitychange', refreshActivity);
+  window.addEventListener('focus', refreshActivity);
+  window.addEventListener('blur', refreshActivity);
+  window.addEventListener('pagehide', function () {
+    updateActiveTime(true);
+  });
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) restoreActiveTime();
+    refreshActivity();
+  });
+  window.setInterval(refreshActivity, 1000);
+
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(function (item) {
     var q = item.querySelector('.faq-q');
