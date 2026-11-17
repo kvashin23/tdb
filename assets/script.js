@@ -1,8 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Metrica goals for contact links and time spent in the foreground.
+  // Metrica goals for confirmed requests, contacts and time in the foreground.
   function reachGoal(goal) {
     if (typeof window.ym === 'function') window.ym(112575961, 'reachGoal', goal);
   }
+
+  const requestModalForm = document.getElementById('requestModalForm');
+  const contactsForm = location.pathname.endsWith('/contacts.html')
+    ? document.querySelector('.contact-form:not(#requestModalForm)')
+    : null;
+
+  function trackAcceptedForm(form, goal) {
+    if (!form) return;
+    // The feedback embed sets this attribute only after a successful response.
+    const sentAttribute = 'data-priemnaya-sent';
+    const observer = new MutationObserver(function (changes) {
+      const wasSent = changes[0].oldValue === '1';
+      if (!wasSent && form.getAttribute(sentAttribute) === '1') reachGoal(goal);
+    });
+    observer.observe(form, {
+      attributeFilter: [sentAttribute],
+      attributeOldValue: true
+    });
+  }
+
+  trackAcceptedForm(contactsForm, 'form_contacts_sent');
+  trackAcceptedForm(requestModalForm, 'form_specification_sent');
 
   const phoneGoals = {
     '+74959782555': 'phone_click_moscow',
