@@ -308,8 +308,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       try {
         const body = new FormData(form);
-        body.set('site', 'pk_2qMg82RqciFOmlAV');
-        body.set('form', form.dataset.form || 'main');
+        const isProduction = ['tdbngs.ru', 'www.tdbngs.ru'].includes(location.hostname);
+        body.set('site', isProduction ? 'pk_W5BkUYRNNxBMx3Dk' : 'pk_2qMg82RqciFOmlAV');
+        body.set('form', isProduction ? 'consult' : (form.dataset.form || 'main'));
         body.set('page', location.href);
         const response = await fetch('https://feedback.nuts-agency.ru/api/submit/', {
           method: 'POST',
