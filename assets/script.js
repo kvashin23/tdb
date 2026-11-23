@@ -4,28 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (typeof window.ym === 'function') window.ym(112575961, 'reachGoal', goal);
   }
 
-  const requestModalForm = document.getElementById('requestModalForm');
-  const contactsForm = location.pathname.endsWith('/contacts.html')
-    ? document.querySelector('.contact-form:not(#requestModalForm)')
-    : null;
-
-  function trackAcceptedForm(form, goal) {
-    if (!form) return;
-    // The feedback embed sets this attribute only after a successful response.
-    const sentAttribute = 'data-priemnaya-sent';
-    const observer = new MutationObserver(function (changes) {
-      const wasSent = changes[0].oldValue === '1';
-      if (!wasSent && form.getAttribute(sentAttribute) === '1') reachGoal(goal);
-    });
-    observer.observe(form, {
-      attributeFilter: [sentAttribute],
-      attributeOldValue: true
-    });
-  }
-
-  trackAcceptedForm(contactsForm, 'form_contacts_sent');
-  trackAcceptedForm(requestModalForm, 'form_specification_sent');
-
   const phoneGoals = {
     '+74959782555': 'phone_click_moscow',
     '+78124182233': 'phone_click_spb',
@@ -280,8 +258,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Form validation: block submit until required fields + consent are valid.
   // On success: confirm, reset, and close the request modal if the form is inside one.
   document.querySelectorAll('.contact-form').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
+      if (form.dataset.sending === 'true') return;
       let valid = true;
       const name = form.querySelector('input[name="name"]');
       const phone = form.querySelector('input.phone-mask');
@@ -315,10 +294,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (!valid) return;
 
-      alert('Спасибо! Заявка отправлена.');
-      form.reset();
-      const modal = form.closest('.request-modal');
-      if (modal) modal.classList.remove('open');
+      const button = form.querySelector('[type="submit"]');
+      let status = form.querySelector('[data-form-status]');
+      if (!status) {
+        status = document.createElement('p');
+        status.setAttribute('data-form-status', '');
+        status.setAttribute('role', 'status');
+        form.appendChild(status);
+      }
+      form.dataset.sending = 'true';
+      button.disabled = true;
+      status.textContent = 'Отправляем заявку…';
+
+      try {
+        const body = new FormData(form);
+        body.set('site', 'pk_2qMg82RqciFOmlAV');
+        body.set('form', form.dataset.form || 'main');
+        body.set('page', location.href);
+        const response = await fetch('https://feedback.nuts-agency.ru/api/submit/', {
+          method: 'POST',
+          body: body
+        });
+        const result = await response.json();
+        if (!response.ok || result.ok === false) {
+          throw new Error(result.error || 'Не удалось отправить заявку. Попробуйте ещё раз.');
+        }
+
+        reachGoal(form.id === 'requestModalForm'
+          ? 'form_specification_sent' : 'form_contacts_sent');
+        status.textContent = 'Спасибо! Заявка отправлена.';
+        form.reset();
+      } catch (error) {
+        status.textContent = error.message || 'Нет связи с сервером. Попробуйте ещё раз.';
+      } finally {
+        delete form.dataset.sending;
+        button.disabled = false;
+      }
     });
   });
 
