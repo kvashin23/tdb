@@ -542,7 +542,8 @@ footer.site-footer{background:var(--steel);color:var(--muted-light);padding:34px
   .header-phone{display:none;}
   .header-row{gap:10px;}
   .header-actions{gap:10px;}
-  .header-actions .btn-primary{padding:10px 14px;font-size:12px;}
+  .header-actions{margin-left:auto;}
+  .header-actions .btn-primary{display:none;}
   .logo-img{height:34px;}
   .topbar .container{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding-top:14px;padding-bottom:14px;justify-content:stretch;}
   .topbar-item{flex-direction:column;align-items:flex-start;gap:1px;}
