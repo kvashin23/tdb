@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://tdbngs.ru/sitemap.xml
