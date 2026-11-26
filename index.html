@@ -14,7 +14,7 @@
 <meta property="og:description" content="Производство и поставка труб, деталей трубопроводов, опор и металлоконструкций для нефтегазового сектора. Доставка по всей России.">
 <meta property="og:url" content="https://tdbngs.ru/">
 <meta property="og:image" content="https://tdbngs.ru/assets/photos/og-image.jpg">
-<link rel="stylesheet" href="assets/style.css?v=20261125">
+<link rel="stylesheet" href="assets/style.css?v=20261126">
 </head>
 <body>
 <!-- Yandex.Metrika counter -->
@@ -102,11 +102,11 @@
   <div class="container">
     <div class="eyebrow">Собственное производство</div>
     <h2 class="h-title">Собственное производство — прямые поставки без посредников</h2>
+    <div class="plants-collage"><img src="assets/photos/production-collage.jpg" alt="Собственное производство: сварка, окраска, металлоконструкции, детали трубопроводов и опоры" loading="lazy"></div>
     <div class="plants">
       <article class="plant">
-        <div class="plant-photo"><img src="assets/photos/photo-4.jpg" alt="Производство ООО ЗМК «Этон»" loading="lazy"><span class="plant-tag">г. Старый Оскол</span></div>
         <div class="plant-body">
-          <div class="plant-kicker">Металлоконструкции</div>
+          <div class="plant-kicker">Металлоконструкции · г. Старый Оскол</div>
           <h3>ООО ЗМК «Этон»</h3>
           <p class="plant-lead">Российский производитель металлоконструкций для промышленного и строительного сектора. Вся продукция проходит строгий контроль качества и соответствует отраслевым стандартам.</p>
           <div class="plant-stats">
@@ -123,9 +123,8 @@
         </div>
       </article>
       <article class="plant">
-        <div class="plant-photo"><img src="assets/photos/photo-3.jpg" alt="Производство ООО «ЗТК Уралгаздеталь»" loading="lazy"><span class="plant-tag">г. Старый Оскол</span></div>
         <div class="plant-body">
-          <div class="plant-kicker">Детали трубопроводов</div>
+          <div class="plant-kicker">Детали трубопроводов · г. Старый Оскол</div>
           <h3>ООО «ЗТК Уралгаздеталь»</h3>
           <p class="plant-lead">Надёжный российский производитель соединительных деталей трубопровода на собственной промышленной площадке. Продукция соответствует ТР ТС 032/2013 и проходит строгий контроль качества.</p>
           <div class="plant-stats">
@@ -178,6 +177,39 @@
     </div>
   </div>
 </section>
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="eyebrow">Реализованные объекты</div>
+    <h2 class="h-title">Наша продукция на объектах</h2>
+    <div class="projects-grid">
+      <button type="button" class="project-card" data-photos="assets/projects/kashira-1.jpg,assets/projects/kashira-2.webp">
+        <span class="project-photo"><img src="assets/projects/kashira-1.jpg" alt="Циркводоводы на трале перед отгрузкой" loading="lazy"><span class="project-count">2 фото</span></span>
+        <span class="project-body"><span class="project-kicker">Детали трубопроводов</span><span class="project-title">Циркводоводы для блоков парогазовой установки Каширской ГРЭС</span></span>
+      </button>
+      <button type="button" class="project-card" data-photos="assets/projects/ust-luga-1.webp,assets/projects/ust-luga-2.webp,assets/projects/ust-luga-3.webp">
+        <span class="project-photo"><img src="assets/projects/ust-luga-1.webp" alt="Рамы металлоконструкций межцеховой эстакады в цехе" loading="lazy"><span class="project-count">3 фото</span></span>
+        <span class="project-body"><span class="project-kicker">Металлоконструкции</span><span class="project-title">Межцеховая эстакада объектов ОНН, газоперерабатывающий комплекс этаносодержащего газа, п. Усть-Луга</span></span>
+      </button>
+      <button type="button" class="project-card" data-photos="assets/projects/rpen-1.jpg,assets/projects/rpen-2.jpg,assets/projects/rpen-3.jpg,assets/projects/rpen-4.jpg,assets/projects/rpen-5.jpg">
+        <span class="project-photo"><img src="assets/projects/rpen-1.jpg" alt="Пролётная балка моста в цехе" loading="lazy"><span class="project-count">5 фото</span></span>
+        <span class="project-body"><span class="project-kicker">Мостовые металлоконструкции</span><span class="project-title">Мост через реку Рпень</span></span>
+      </button>
+      <button type="button" class="project-card" data-photos="assets/projects/nsrz-1.jpg">
+        <span class="project-photo"><img src="assets/projects/nsrz-1.jpg" alt="Металлоконструкции на трале перед отгрузкой" loading="lazy"><span class="project-count">1 фото</span></span>
+        <span class="project-body"><span class="project-kicker">Металлоконструкции</span><span class="project-title">АО «НСРЗ», г. Новороссийск — универсальный перегрузочный комплекс</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="cert-lightbox" id="projectLightbox">
+  <button class="cert-lightbox-close" type="button" aria-label="Закрыть">&times;</button>
+  <button class="cert-lightbox-nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+  <img class="cert-lightbox-img" src="" alt="Фото объекта">
+  <button class="cert-lightbox-nav next" type="button" aria-label="Следующее фото">›</button>
+  <div class="cert-lightbox-count"></div>
+</div>
 
 <section class="section process-section">
   <div class="container">
@@ -419,6 +451,6 @@
     </form>
   </div>
 </div>
-<script src="assets/script.js?v=20261123-forms2"></script>
+<script src="assets/script.js?v=20261126"></script>
 </body>
 </html>

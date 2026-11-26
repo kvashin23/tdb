@@ -194,6 +194,42 @@ document.addEventListener('DOMContentLoaded', function () {
     function (a) { return a.getAttribute('href'); }
   );
 
+  // Realized projects gallery (index): each card opens its own set of photos
+  (function () {
+    const lb = document.getElementById('projectLightbox');
+    const cards = document.querySelectorAll('.project-card[data-photos]');
+    if (!lb || !cards.length) return;
+    const imgEl = lb.querySelector('.cert-lightbox-img');
+    const countEl = lb.querySelector('.cert-lightbox-count');
+    const navs = lb.querySelectorAll('.cert-lightbox-nav');
+    let photos = [], current = 0;
+    function show(i) {
+      current = (i + photos.length) % photos.length;
+      imgEl.src = photos[current];
+      countEl.textContent = photos.length > 1 ? (current + 1) + ' / ' + photos.length : '';
+    }
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        photos = card.getAttribute('data-photos').split(',');
+        const title = card.querySelector('.project-title');
+        imgEl.alt = title ? title.textContent : '';
+        navs.forEach(function (n) { n.style.display = photos.length > 1 ? '' : 'none'; });
+        show(0);
+        lb.classList.add('open');
+      });
+    });
+    lb.querySelector('.cert-lightbox-close').addEventListener('click', function () { lb.classList.remove('open'); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('open'); });
+    navs[0].addEventListener('click', function () { show(current - 1); });
+    navs[1].addEventListener('click', function () { show(current + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') lb.classList.remove('open');
+      if (e.key === 'ArrowLeft' && photos.length > 1) show(current - 1);
+      if (e.key === 'ArrowRight' && photos.length > 1) show(current + 1);
+    });
+  })();
+
   // Types accordion (metal-constructions page)
   document.querySelectorAll('.types-accordion').forEach(function (wrap) {
     wrap.querySelectorAll('.ta-item').forEach(function (item) {

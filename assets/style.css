@@ -908,3 +908,21 @@ nav.main-nav a{white-space:nowrap;}
 .coat-panel .stage h5{font-family:var(--font-display);font-size:15px;text-transform:uppercase;margin:0 0 6px;font-weight:600;letter-spacing:.01em;}
 .coat-panel .stage p{font-size:13.5px;line-height:1.55;color:#b9bdc1;}
 @media (max-width:900px){.coat-panel{grid-template-columns:1fr;}.coat-panel .stages{grid-template-columns:1fr;gap:18px;}.coat-panel .coat-types,.coat-panel .coat-stages{padding:30px 24px;}}
+
+/* ---------- production collage (index) ---------- */
+.plants-collage{margin-top:28px;overflow:hidden;background:var(--ink);}
+.plants-collage img{display:block;width:100%;height:auto;}
+
+/* ---------- realized projects (index) ---------- */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:28px;}
+.project-card{display:flex;flex-direction:column;padding:0;border:1px solid var(--line);background:var(--white);text-align:left;font:inherit;color:inherit;cursor:zoom-in;overflow:hidden;transition:box-shadow .25s,transform .25s;}
+.project-card:hover{box-shadow:0 18px 40px rgba(20,20,22,.12);transform:translateY(-3px);}
+.project-card:focus-visible{outline:3px solid var(--red);outline-offset:2px;}
+.project-photo{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:var(--ink);}
+.project-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;}
+.project-card:hover .project-photo img{transform:scale(1.04);}
+.project-count{position:absolute;right:14px;bottom:14px;background:rgba(10,10,11,.72);color:var(--white);font-family:var(--font-display);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;}
+.project-body{display:block;padding:22px 26px 26px;}
+.project-kicker{display:block;font-family:var(--font-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.project-title{display:block;font-family:var(--font-display);font-size:21px;line-height:1.25;font-weight:600;text-transform:uppercase;color:var(--ink);}
+@media (max-width:900px){.projects-grid{grid-template-columns:1fr;gap:18px;}.project-body{padding:18px 20px 22px;}.project-title{font-size:18px;}}
